@@ -1,0 +1,22 @@
+{
+	"name": "conductorjs",
+	"version": "0.0.1",
+	"description": "conductor for simple time signatures based off the browser's highly accurate starting clock",
+	"main": "index.js",
+	"scripts": {
+		"start": "http-server src/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jsphweid/conductorjs.git"
+	},
+	"author": "joseph weidinger",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/jsphweid/conductorjs/issues"
+	},
+	"homepage": "https://github.com/jsphweid/conductorjs#readme",
+	"devDependencies": {
+		"http-server": "^0.11.1"
+	}
+}

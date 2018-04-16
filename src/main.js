@@ -87,7 +87,6 @@ function draw() {
 
 	const currentAngle = getModifiedRotationAngle(secondsSinceStart)
 	const percentThroughCycle = angleReducer(currentAngle + STARTING_ANGLE_OFFSET) / FULL_CIRCLE
-	console.log('percentThroughCycle', percentThroughCycle)
 
 	x = RADIUS_OF_CIRCLE * Math.cos(currentAngle) + CENTER.x
 	y = RADIUS_OF_CIRCLE * Math.sin(currentAngle) + CENTER.y
