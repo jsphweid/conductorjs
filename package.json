@@ -1,5 +1,5 @@
 {
-	"name": "conductorjs",
+	"name": "react-conductor",
 	"version": "0.0.1",
 	"description": "conductor for simple time signatures based off the browser's highly accurate starting clock",
 	"main": "index.js",
@@ -8,14 +8,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/jsphweid/conductorjs.git"
+		"url": "git+https://github.com/jsphweid/react-conductor.git"
 	},
 	"author": "joseph weidinger",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/jsphweid/conductorjs/issues"
+		"url": "https://github.com/jsphweid/react-conductor/issues"
 	},
-	"homepage": "https://github.com/jsphweid/conductorjs#readme",
+	"homepage": "https://github.com/jsphweid/react-conductor#readme",
 	"devDependencies": {
 		"http-server": "^0.11.1"
 	}
