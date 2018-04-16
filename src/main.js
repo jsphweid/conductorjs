@@ -8,7 +8,7 @@ const WIDTH = 500
 const RADIUS_OF_CIRCLE = 100
 const DEFAULT_LINE_WIDTH = 6
 
-const BEATS_PER_MINUTE = 60
+const BEATS_PER_MINUTE = 120
 const BEATS_PER_SECOND = BEATS_PER_MINUTE / 60
 const SECONDS_PER_BEAT = 1 / BEATS_PER_SECOND
 
@@ -76,11 +76,6 @@ function getModifiedRotationAngle(secondsSinceStart) {
 function draw() {
 	window.requestAnimationFrame(draw)
 	if (!started) return
-	ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-	createFrame()
-
-	createSquare(CENTER.x, CENTER.y)
 
 	const secondsSinceStart = audioCtx.currentTime - startTime
 
@@ -90,25 +85,35 @@ function draw() {
 	x = RADIUS_OF_CIRCLE * Math.cos(currentAngle) + CENTER.x
 	y = RADIUS_OF_CIRCLE * Math.sin(currentAngle) + CENTER.y
 
+	createClearRect(percentThroughCycle)
+	createFrame(percentThroughCycle)
+	createSquare(CENTER.x, CENTER.y, percentThroughCycle)
 	createSquare(x, y, percentThroughCycle)
-
-	createDownbeatLine()
+	createDownbeatLine(percentThroughCycle)
 }
 
-const createDownbeatLine = () => {
+const createClearRect = percentThroughCycle => {
+	ctx.fillStyle = percentThroughCycle < 0.2 ? '#000000' : '#FFFFFF'
+	ctx.fillRect(0, 0, canvas.width, canvas.height)
+}
+
+const createDownbeatLine = percentThroughCycle => {
+	ctx.strokeStyle = percentThroughCycle < 0.2 ? '#FFFFFF' : '#000000'
 	ctx.beginPath()
 	ctx.moveTo(CENTER.x, CENTER.y)
 	ctx.lineTo(CENTER.x, CENTER.y + RADIUS_OF_CIRCLE)
 	ctx.stroke()
 }
 
-const createFrame = () => {
+const createFrame = percentThroughCycle => {
+	ctx.strokeStyle = percentThroughCycle < 0.2 ? '#FFFFFF' : '#000000'
 	ctx.strokeRect(0, 0, WIDTH, HEIGHT)
 }
 
-const createSquare = (x, y, widthMultiplier = 1) => {
-	const dotWidth = 6 * widthMultiplier + 4
+const createSquare = (x, y, percentThroughCycle) => {
+	const dotWidth = 30 * percentThroughCycle + 2
 	const centerOffset = dotWidth / 2
+	ctx.fillStyle = percentThroughCycle < 0.2 ? '#FFFFFF' : '#000000'
 	ctx.fillRect(x - centerOffset, y - centerOffset, dotWidth, dotWidth)
 }
 
