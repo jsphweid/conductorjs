@@ -12,7 +12,6 @@ const BEATS_PER_MINUTE = 60
 const BEATS_PER_SECOND = BEATS_PER_MINUTE / 60
 const SECONDS_PER_BEAT = 1 / BEATS_PER_SECOND
 
-const ANGLE_OFFSET = 0.25 * FULL_CIRCLE
 const CENTER = { x: WIDTH / 2, y: HEIGHT / 2 }
 const STARTING_ANGLE_OFFSET = 0.75 * FULL_CIRCLE
 
@@ -69,7 +68,7 @@ function angleReducer(angle) {
 
 function getModifiedRotationAngle(secondsSinceStart) {
 	const numBeatsSinceStart = secondsSinceStart / SECONDS_PER_BEAT
-	const angle = numBeatsSinceStart * FULL_CIRCLE + ANGLE_OFFSET
+	const angle = numBeatsSinceStart * FULL_CIRCLE + FULL_CIRCLE * 0.25
 	const modification = AMOUNT_INFLUENCE_OF_SWAY * Math.sin(angle + STARTING_ANGLE_OFFSET)
 	return angle + modification
 }
