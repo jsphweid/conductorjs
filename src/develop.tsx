@@ -7,14 +7,11 @@ import { getSecondsPerBeat } from './common/helpers'
 const BPM = 120
 const audioContext: AudioContext = new AudioContext()
 const allOscs: OscillatorNode[] = []
-let alreadyRestarted = false
+let startTime = null
 
-function start() {
-	if (alreadyRestarted) {
-		restartAudioContext()
-	}
-	alreadyRestarted = true
-	const startTime = audioContext.currentTime
+let alreadyStarted = false
+
+function render(startTime = 0) {
 	ReactDOM.render(
 		<ReactConductor
 			audioContext={audioContext}
@@ -26,7 +23,6 @@ function start() {
 		/>,
 		document.getElementById('app')
 	)
-	scheduleAllNotes(startTime)
 }
 
 function scheduleAllNotes(startTime: number) {
@@ -41,10 +37,25 @@ function scheduleAllNotes(startTime: number) {
 	}
 }
 
+function startRecording() {
+	startTime = audioContext.currentTime
+	if (alreadyStarted) {
+		restartAudioContext()
+	}
+	alreadyStarted = true
+	render(startTime)
+	scheduleAllNotes(startTime)
+}
+
 async function restartAudioContext() {
 	allOscs.forEach(osc => {
 		osc.disconnect()
 	})
 }
 
-ReactDOM.render(<button onClick={start.bind(this)}>Start</button>, document.getElementById('btn'))
+render()
+
+ReactDOM.render(
+	<button onClick={startRecording.bind(this)}>Start</button>,
+	document.getElementById('btn')
+)

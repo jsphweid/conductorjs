@@ -24,7 +24,6 @@ export default class Scene {
 	}
 
 	public drawFrame = (time: number) => {
-		if (!time) return
 		const currentAngle = this.getCurrentAngle(time)
 		const percentThroughCycle = angleReducer(currentAngle + STARTING_ANGLE_OFFSET) / FULL_CIRCLE
 
