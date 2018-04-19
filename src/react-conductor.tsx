@@ -37,7 +37,12 @@ export default class ReactConductor extends React.Component<ReactConductorProps>
 		window.requestAnimationFrame(this.animationStep.bind(this))
 	}
 
-	public animationStep() {
+	private setCanvasContext = (canvas: HTMLCanvasElement): void => {
+		if (this.canvasContext) return null
+		this.canvasContext = canvas.getContext('2d')
+	}
+
+	private animationStep = (): void => {
 		setTimeout(() => {
 			window.requestAnimationFrame(this.animationStep.bind(this))
 			const timeSinceStart = this.props.startTime
@@ -51,7 +56,7 @@ export default class ReactConductor extends React.Component<ReactConductorProps>
 		return (
 			<canvas
 				id="react-conductor-canvas"
-				ref={c => (this.canvasContext = c.getContext('2d'))}
+				ref={this.setCanvasContext}
 				height={this.props.height}
 				width={this.props.width}
 			/>

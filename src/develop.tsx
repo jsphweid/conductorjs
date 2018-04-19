@@ -7,13 +7,13 @@ import { getSecondsPerBeat } from './common/helpers'
 const BPM = 120
 const audioContext: AudioContext = new AudioContext()
 const allOscs: OscillatorNode[] = []
-let started = false
+let alreadyRestarted = false
 
-function start(restart = false) {
-	if (started && !restart) {
+function start() {
+	if (alreadyRestarted) {
 		restartAudioContext()
 	}
-	started = true
+	alreadyRestarted = true
 	const startTime = audioContext.currentTime
 	ReactDOM.render(
 		<ReactConductor
@@ -45,7 +45,6 @@ async function restartAudioContext() {
 	allOscs.forEach(osc => {
 		osc.disconnect()
 	})
-	start(true)
 }
 
 ReactDOM.render(<button onClick={start.bind(this)}>Start</button>, document.getElementById('btn'))
