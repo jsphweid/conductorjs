@@ -20,7 +20,7 @@ export default class Scene {
 		this.circleRadius = props.options.circleRadius
 		this.secondsPerBeat = getSecondsPerBeat(props.bpm)
 		this.acceleration = props.options.acceleration
-		console.log('this', this)
+		this.ctx.lineWidth = props.options.lineWidth
 	}
 
 	public drawFrame = (time: number) => {

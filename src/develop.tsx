@@ -22,6 +22,7 @@ function start(restart = false) {
 			width={500}
 			bpm={BPM}
 			startTime={startTime}
+			options={{ acceleration: 0.8 }}
 		/>,
 		document.getElementById('app')
 	)

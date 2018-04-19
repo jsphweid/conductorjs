@@ -25,12 +25,15 @@ export default class ReactConductor extends React.Component<ReactConductorProps>
 		super(props)
 	}
 
-	componentWillReceiveProps(nextProps: any) {
-		console.log('next', nextProps.startTime)
-	}
 	componentDidMount() {
-		this.scene = new Scene(this.canvasContext, this.props)
-		this.canvasContext.lineWidth = this.props.options.lineWidth
+		const props = {
+			...this.props,
+			options: {
+				...ReactConductor.defaultProps.options,
+				...this.props.options
+			}
+		}
+		this.scene = new Scene(this.canvasContext, props)
 		window.requestAnimationFrame(this.animationStep.bind(this))
 	}
 
