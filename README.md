@@ -4,5 +4,4 @@ conductor for simple time signatures based off the browser's highly accurate sta
 
 # todo
 
-*   be able to click start multiple times without crashing
 *   should render default 0th position before clicking start...
