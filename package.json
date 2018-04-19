@@ -3,8 +3,8 @@
 	"version": "0.0.1",
 	"description":
 		"conductor for simple time signatures based off the browser's highly accurate starting clock",
-	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
+	"main": "dist/react-conductor.js",
+	"types": "dist/react-conductor.d.ts",
 	"scripts": {
 		"clean": "rimraf dist/",
 		"start": "webpack-dev-server --mode development",
