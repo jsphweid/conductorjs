@@ -1,8 +1,7 @@
 {
 	"name": "react-conductor",
-	"version": "0.0.1",
-	"description":
-		"conductor for simple time signatures based off the browser's highly accurate starting clock",
+	"version": "0.0.2",
+	"description": "conductor for simple time signatures based off the browser's highly accurate starting clock",
 	"main": "dist/react-conductor.js",
 	"types": "dist/react-conductor.d.ts",
 	"scripts": {
@@ -29,7 +28,10 @@
 		"url": "https://github.com/jsphweid/react-conductor/issues"
 	},
 	"lint-staged": {
-		"*.scss": ["prettier --write", "git add"],
+		"*.scss": [
+			"prettier --write",
+			"git add"
+		],
 		"*.{js,jsx,ts,tsx}": [
 			"prettier --parser typescript --write",
 			"tslint --fix --force",
